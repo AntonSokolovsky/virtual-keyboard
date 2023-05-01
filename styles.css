@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Segoe';
+    src: url("assets/Segoe%20UI.ttf");
+    font-weight: 400;
+  }
+* {
+    box-sizing: border-box;
+}
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    background-color: azure;
+}
+.input {
+    display: block;
+    width: 1326px;
+    height: 200px;
+    margin: 10px auto 10px;
+    padding: 10px;
+    font-size: 26px;
+    color: #1A1A1A;
+    resize: none;
+}
+.keyboard {
+    width: 1326px;
+    height: 360px;
+    margin: 0 auto;
+    background-color: #1A1A1A;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+}
+.row {
+    height: 63px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+}
+.key {
+    width: 78px;
+    height: 63px;
+    background-color: #2E2E2E;
+    color: #F8F8F8;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    border-left: 6px solid transparent;
+    user-select: none;
+}
+.key:hover {
+    background-color: silver;
+    color: black;
+}
+.key:active {
+    background-color: #6d4cef;
+    color: #F8F8F8;
+}
+.backspace,
+.tab {
+    width: 117px;
+}
+
+.del,
+.esc {
+    width: 97.5px;
+}
+.enter {
+    width: 227px;
+}
+.caps {
+    width: 156px;
+}
+.shift {
+    width: 191px;
+}
+.space {
+    width: 468px;
+}
+.pressed {
+    background-color: #6d4cef;
+    color: #F8F8F8;
+}
