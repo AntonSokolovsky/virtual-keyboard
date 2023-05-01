@@ -47,6 +47,7 @@
     font-size: 28px;
     font-weight: 400;
     border-left: 6px solid transparent;
+    user-select: none;
 }
 .key:hover {
     background-color: silver;
