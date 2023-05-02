@@ -29,6 +29,14 @@ export function action(event) {
     arrCurrentTargetDigital.forEach((element) => arrDigitals.push(element.innerHTML));
     console.log((arrCurrentTarget[16].innerHTML === 'Q' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && !arrCurrentTarget[30].classList.contains('pressed') && event.type !== "keyup" && event.repeat )
     console.log(event.type, event.repeat)
+    if (event.type === 'keydown') {
+        console.log('Helli, Peter')
+        arrCurrentTargetDigital.forEach((el, i) => {
+            if(el.innerHTML === phisicalKey) {
+                el.classList.add('pressed');
+            }     
+    })
+}
     if (event.target.classList.contains('shift') && (arrCurrentTarget[16].innerHTML === 'q' || arrCurrentTarget[16].innerHTML === 'й') && !arrCurrentTarget[30].classList.contains('pressed')) {
        shiftPressed(arrCurrentTarget, shiftKeys);
     } else if ((arrCurrentTarget[16].innerHTML === 'Q' || arrCurrentTarget[16].innerHTML === 'Й' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && event.target.classList.contains('key') && !arrCurrentTarget[30].classList.contains('pressed') && event.type === "click" && event.repeat !== 'true') {
