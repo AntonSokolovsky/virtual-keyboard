@@ -1,4 +1,5 @@
 import { addActive , removeActive, shiftPressed, shiftUnpressed, capsPressed, capsUnpressed } from './modifierDigitalsFunctions';
+import { changeLanguage } from './changeLanguage';
 
 export function action(event) {
     event.preventDefault();
@@ -28,9 +29,9 @@ export function action(event) {
     arrCurrentTargetDigital.forEach((element) => arrDigitals.push(element.innerHTML));
     console.log((arrCurrentTarget[16].innerHTML === 'Q' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && !arrCurrentTarget[30].classList.contains('pressed') && event.type !== "keyup" && event.repeat )
     console.log(event.type, event.repeat)
-    if (event.target.classList.contains('shift') && arrCurrentTarget[16].innerHTML === 'q' && !arrCurrentTarget[30].classList.contains('pressed')) {
+    if (event.target.classList.contains('shift') && (arrCurrentTarget[16].innerHTML === 'q' || arrCurrentTarget[16].innerHTML === 'й') && !arrCurrentTarget[30].classList.contains('pressed')) {
        shiftPressed(arrCurrentTarget, shiftKeys);
-    } else if ((arrCurrentTarget[16].innerHTML === 'Q' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && event.target.classList.contains('key') && !arrCurrentTarget[30].classList.contains('pressed') && event.type === "click" && event.repeat !== 'true') {
+    } else if ((arrCurrentTarget[16].innerHTML === 'Q' || arrCurrentTarget[16].innerHTML === 'Й' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && event.target.classList.contains('key') && !arrCurrentTarget[30].classList.contains('pressed') && event.type === "click" && event.repeat !== 'true') {
         console.log('hello, Peter')
         if(event.target.innerHTML !== 'Shift') {
             input.value = input.value + event.target.innerHTML; 
@@ -43,7 +44,7 @@ export function action(event) {
         input.value = input.value + event.key;
     } else if (event.target.classList.contains('caps') && event.target.classList.contains('pressed')) {
         capsUnpressed(arrCurrentTarget, capsKey);
-    } else if(phisicalKey === 'Shift' && arrCurrentTarget[16].innerHTML === 'q' && !arrCurrentTarget[30].classList.contains('pressed') && event.type === "keydown") {
+    } else if(phisicalKey === 'Shift' && (arrCurrentTarget[16].innerHTML === 'q' || arrCurrentTarget[16].innerHTML === 'й') && !arrCurrentTarget[30].classList.contains('pressed') && event.type === "keydown") {
         shiftPressed(arrCurrentTarget, shiftKeys);
         // event.repeat = 'false'
     } else if(phisicalKey === 'Shift' && event.type === 'keyup') {
@@ -114,9 +115,11 @@ export function action(event) {
     } else if ((event.target.classList.contains('ctrl') || (phisicalKey === 'Control' && event.type === 'keyup')) && document.querySelector('.alt').classList.contains('pressed')) {
         ctrlKeys.forEach(el => el.classList.remove('pressed'));
         altKeys.forEach(el => el.classList.remove('pressed'));
+        changeLanguage();
     } else if ((event.target.classList.contains('alt') || (phisicalKey === 'Alt' && event.type === 'keyup')) && document.querySelector('.ctrl').classList.contains('pressed')) {
         ctrlKeys.forEach(el => el.classList.remove('pressed'));
         altKeys.forEach(el => el.classList.remove('pressed'));
+        changeLanguage(arrCurrentTarget);
     } else if (event.target.classList.contains('enter')) {
         input.value = input.value + '\n';
     } else if (phisicalKey === 'Enter' && event.type === 'keydown') {
