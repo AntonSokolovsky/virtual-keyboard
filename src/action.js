@@ -22,6 +22,7 @@ export function action(event) {
     let arrCurrentTargetDigital = event.currentTarget.querySelectorAll('.withTwoValue');
     let ctrlKeys = document.querySelectorAll('.ctrl');
     let altKeys = document.querySelectorAll('.alt');
+    let enterKey = document.querySelector('.enter');
     //console.log(arrCurrentTargetDigital);
     let arrDigitals = [];
     arrCurrentTargetDigital.forEach((element) => arrDigitals.push(element.innerHTML));
@@ -116,5 +117,12 @@ export function action(event) {
     } else if ((event.target.classList.contains('alt') || (phisicalKey === 'Alt' && event.type === 'keyup')) && document.querySelector('.ctrl').classList.contains('pressed')) {
         ctrlKeys.forEach(el => el.classList.remove('pressed'));
         altKeys.forEach(el => el.classList.remove('pressed'));
+    } else if (event.target.classList.contains('enter')) {
+        input.value = input.value + '\n';
+    } else if (phisicalKey === 'Enter' && event.type === 'keydown') {
+        input.value = input.value + '\n';
+        enterKey.classList.add('pressed');
+    } else if (phisicalKey === 'Enter' && event.type === 'keyup') {
+       enterKey.classList.remove('pressed');
     }
 }
