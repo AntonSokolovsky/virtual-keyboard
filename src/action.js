@@ -31,7 +31,9 @@ export function action(event) {
        shiftPressed(arrCurrentTarget, shiftKeys);
     } else if ((arrCurrentTarget[16].innerHTML === 'Q' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && event.target.classList.contains('key') && !arrCurrentTarget[30].classList.contains('pressed') && event.type === "click" && event.repeat !== 'true') {
         console.log('hello, Peter')
-        input.value = input.value + event.target.innerHTML;
+        if(event.target.innerHTML !== 'Shift') {
+            input.value = input.value + event.target.innerHTML; 
+        }
         shiftUnpressed(arrCurrentTarget, shiftKeys);
     } else if (event.target.classList.contains('caps') && !event.target.classList.contains('pressed')) {
         shiftKeys.forEach(el => el.classList.remove('pressed'));
