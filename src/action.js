@@ -120,14 +120,14 @@ export function action(event) {
         ctrlKeys.forEach(el => el.classList.remove('pressed'));
     } else if ((event.target.classList.contains('alt') || (phisicalKey === 'Alt' && event.type === 'keyup')) && !document.querySelector('.ctrl').classList.contains('pressed')) {
         altKeys.forEach(el => el.classList.remove('pressed'));
-    } else if ((event.target.classList.contains('ctrl') || (phisicalKey === 'Control' && event.type === 'keyup')) && document.querySelector('.alt').classList.contains('pressed')) {
-        ctrlKeys.forEach(el => el.classList.remove('pressed'));
-        altKeys.forEach(el => el.classList.remove('pressed'));
-        changeLanguage();
-    } else if ((event.target.classList.contains('alt') || (phisicalKey === 'Alt' && event.type === 'keyup')) && document.querySelector('.ctrl').classList.contains('pressed')) {
-        ctrlKeys.forEach(el => el.classList.remove('pressed'));
-        altKeys.forEach(el => el.classList.remove('pressed'));
-        changeLanguage(arrCurrentTarget);
+    // } else if ((event.target.classList.contains('ctrl') || (phisicalKey === 'Control' && event.type === 'keydown')) && document.querySelector('.alt').classList.contains('pressed')) {
+    //     ctrlKeys.forEach(el => el.classList.remove('pressed'));
+    //     altKeys.forEach(el => el.classList.remove('pressed'));
+    //     changeLanguage(arrCurrentTarget);
+    // } else if ((event.target.classList.contains('alt') || (phisicalKey === 'Alt' && event.type === 'keydown')) && document.querySelector('.ctrl').classList.contains('pressed')) {
+    //     ctrlKeys.forEach(el => el.classList.remove('pressed'));
+    //     altKeys.forEach(el => el.classList.remove('pressed'));
+    //     changeLanguage(arrCurrentTarget);
     } else if (event.target.classList.contains('enter')) {
         input.value = input.value + '\n';
     } else if (phisicalKey === 'Enter' && event.type === 'keydown') {
@@ -135,5 +135,10 @@ export function action(event) {
         enterKey.classList.add('pressed');
     } else if (phisicalKey === 'Enter' && event.type === 'keyup') {
        enterKey.classList.remove('pressed');
+    }
+    if(document.querySelector('.ctrl').classList.contains('pressed') && document.querySelector('.alt').classList.contains('pressed')) {
+        changeLanguage(arrCurrentTarget);
+        ctrlKeys.forEach(el => el.classList.remove('pressed'));
+        altKeys.forEach(el => el.classList.remove('pressed'));
     }
 }
