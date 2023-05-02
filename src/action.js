@@ -48,7 +48,7 @@ export function action(event) {
     } else if (event.target.classList.contains('caps') && !event.target.classList.contains('pressed')) {
         shiftKeys.forEach(el => el.classList.remove('pressed'));
         capsPressed(arrCurrentTarget, capsKey);
-    } else if (event.type === 'keydown'&& !['Escape', 'Tab', 'CapsLock', 'Shift', 'Control', 'Meta', 'Alt', 'Enter', 'Backspace', 'Delete'].includes(event.key)) {
+    } else if (event.type === 'keydown'&& !['Escape', 'Tab', 'CapsLock', 'Shift', 'Control', 'Meta', 'Alt', 'Enter', 'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp'].includes(event.key)) {
         input.value = input.value + event.key;
     } else if (event.target.classList.contains('caps') && event.target.classList.contains('pressed')) {
         capsUnpressed(arrCurrentTarget, capsKey);
