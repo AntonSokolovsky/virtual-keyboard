@@ -1,7 +1,9 @@
 {
   "name": "virtual-keyboard",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",

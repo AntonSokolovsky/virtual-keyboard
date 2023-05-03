@@ -11,30 +11,30 @@ module.exports = {
   },
   module: {
     rules: [
-        {
-          test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-          type: 'asset/resource',
-        },
-        {
-          test: /\.(woff(2)?|eot|ttf|otf)$/i,
-          type: 'asset/resource',
-        },
-        {
-          test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        },
-        {
-          test: /\.s[ac]ss$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-        }
-      ]
-    },
-    plugins: [
-        new HtmlWebPackPlugin({
-         title: "Virtual Keyboard"
-        }),
-        new MiniCssExtractPlugin({
-        filename: 'styles.css',
-        })
-    ]
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      title: 'Virtual Keyboard',
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
+  ],
 };

@@ -1,6 +1,8 @@
 import { createArea } from './createArea';
 import './style.css';
-import { arrSymbolKeysEn, arrSymbolKeysEnUp, arrSymbolKeysRu, arrSymbolKeysRuUp } from './arrSymbols';
+import {
+  arrSymbolKeysEn, arrSymbolKeysEnUp, arrSymbolKeysRu, arrSymbolKeysRuUp,
+} from './arrSymbols';
 import { createAllKeys } from './createAllKeys';
 import { action } from './action';
 // import { removeActive, shiftPressed, shiftUnpressed, capsPressed, capsUnpressed } from './modifierDigitalsFunctions';
