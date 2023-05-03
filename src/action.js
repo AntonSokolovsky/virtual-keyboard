@@ -112,6 +112,10 @@ export function action(event) {
         tabKey.classList.add('pressed');
     } else if(phisicalKey === 'Tab' && event.type === 'keyup') {
         tabKey.classList.remove('pressed');
+    } else if(phisicalKey === 'CapsLock' && event.type === 'keydown' && !capsKey.classList.contains('pressed') && event.repeat !== true) {
+        capsPressed(arrCurrentTarget, capsKey);
+    } else if(phisicalKey === 'CapsLock' && event.type === 'keydown' && capsKey.classList.contains('pressed') && event.repeat !== true) {
+        capsUnpressed(arrCurrentTarget, capsKey);
     } else if ((event.target.classList.contains('ctrl') || (phisicalKey === 'Control' && event.type === 'keydown')) && !event.target.classList.contains('pressed')) {
         ctrlKeys.forEach(el => el.classList.add('pressed'));
     } else if ((event.target.classList.contains('alt') || (phisicalKey === 'Alt' && event.type === 'keydown'))&& !event.target.classList.contains('pressed')) {
