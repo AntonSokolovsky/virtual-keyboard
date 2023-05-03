@@ -3,7 +3,7 @@ import { changeLanguage } from './changeLanguage';
 
 export function action(event) {
     event.preventDefault();
-    // console.log(event)
+    console.log(event.code)
     let input = document.querySelector('.input');
     // console.log(event.preventDefault())
     let backspaceKey = event.currentTarget.querySelector('.backspace');
@@ -28,7 +28,7 @@ export function action(event) {
     let arrDigitals = [];
     arrCurrentTargetDigital.forEach((element) => arrDigitals.push(element.innerHTML));
     console.log((arrCurrentTarget[16].innerHTML === 'Q' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && !arrCurrentTarget[30].classList.contains('pressed') && event.type !== "keyup" && event.repeat )
-    console.log(event.type, event.repeat)
+    console.log(event.key, event.type, event.repeat)
     if (event.type === 'keydown') {
         console.log('Helli, Peter')
         arrCurrentTargetDigital.forEach((el, i) => {
@@ -37,6 +37,9 @@ export function action(event) {
             }     
     })
 }
+    if(phisicalKey === ' ' && event.type === 'keydown') {
+        space.classList.add('pressed');
+    }
     if (event.target.classList.contains('shift') && (arrCurrentTarget[16].innerHTML === 'q' || arrCurrentTarget[16].innerHTML === 'й') && !arrCurrentTarget[30].classList.contains('pressed')) {
        shiftPressed(arrCurrentTarget, shiftKeys);
     } else if ((arrCurrentTarget[16].innerHTML === 'Q' || arrCurrentTarget[16].innerHTML === 'Й' || event.target.classList.contains('shift')) && !event.target.classList.contains('caps') && event.target.classList.contains('key') && !arrCurrentTarget[30].classList.contains('pressed') && event.type === "click" && event.repeat !== 'true') {
@@ -101,10 +104,7 @@ export function action(event) {
         } else if(phisicalKey === 'ArrowRight') {
             arrowRightKey.classList.remove('pressed');
         }
-    } else if(event.code === 'Space' && event.type === 'keydown') {
-        input.value = input.value + ' ';
-        space.classList.add('pressed');
-    } else if(event.code === 'Space' && event.type === 'keyup'){
+    } else if(event.key === ' ' && event.type === 'keyup'){
         space.classList.remove('pressed');
     } else if(phisicalKey === 'Tab' && event.type === 'keydown') {
         // event.preventDefault();
